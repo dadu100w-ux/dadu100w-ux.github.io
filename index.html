@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 작업 포트폴리오</title>
+<meta name="description" content="문제를 다시 정의하고, 돌아가는 첫 형태로 만들고, 수치로 확인한 작업들">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./">김다영</a>
+    <nav><a href="#tool">검수 도구</a><a href="#lovebug">러브버그</a><a href="#how">일하는 방식</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">AI PRODUCT BUILDER 지원 포트폴리오</div>
+  <h1>문제를 다시 정의하고,<br>돌아가는 첫 형태로 만들고,<br>수치로 확인합니다.</h1>
+  <p class="lead">AI 게임 제작 플랫폼 Verse8에서 게임 검수·QA를 맡고, Claude Code로 첫 게임을 기획부터 출시까지 만들었습니다. 아래 두 작업은 모두 AI와 함께 직접 만든 결과물입니다.</p>
+</section>
+
+<!-- 작업 1 -->
+<section class="block" id="tool">
+  <span class="tag">01</span><span class="tag">LLM 업무 도구</span><span class="tag">Claude API</span>
+  <h2>검수 메모 정리 도구</h2>
+  <p class="lead">날것의 검수 메모를 넣으면 치명도 순으로 이슈를 정리하고, 리뷰 로그 항목을 채우고, 개발자에게 보낼 반려 사유 초안까지 씁니다.</p>
+  <div class="btn-row">
+    <a class="btn" href="tool.html">도구 써 보기 →</a>
+    <a class="btn ghost" href="https://github.com/dadu100w-ux/dadu100w-ux.github.io">코드 보기</a>
+  </div>
+
+  <h3>문제</h3>
+  <p>하루 20개 넘는 게임을 검수하면 판단보다 <b>정리</b>에 시간이 더 듭니다. 플레이하면서 적은 메모를 리뷰 로그의 정해진 항목(크래시, 진행불가, 광고 보상, 저장 등)에 옮기고, 반려할 게임은 사유를 다시 문장으로 씁니다. 같은 내용을 세 번 쓰는 셈입니다.</p>
+  <p>더 큰 문제는 순서였습니다. 메모는 발견한 순서대로 쌓이는데, 판정은 <b>치명적인 것부터</b> 봐야 합니다. 서버·저장·광고 보상 문제 하나가 오타 열 개보다 무겁습니다.</p>
+
+  <h3>만든 것</h3>
+  <div class="flow">
+    <div class="step"><b>입력</b>플레이하며 적은 메모 그대로</div>
+    <div class="step"><b>정리</b>치명·주요·경미로 분류, 메모 원문을 근거로 인용</div>
+    <div class="step"><b>출력</b>판정, 리뷰 로그 항목, 반려 사유 초안, 빠진 확인 항목</div>
+  </div>
+
+  <h3>설계에서 정한 것</h3>
+  <ul class="clean">
+    <li><b>메모에 없는 건 채우지 않는다.</b> 광고를 안 봤으면 "정상지급"이 아니라 "확인불가"로 둡니다. 검수 기록이 틀리는 것보다 비어 있는 게 낫기 때문입니다. 대신 "확인하지 않은 항목"을 따로 뽑아 다음에 볼 것으로 돌려줍니다.</li>
+    <li><b>근거는 메모 원문에서만.</b> 이슈마다 메모의 해당 문장을 인용하게 해서, 모델이 만든 문제인지 내가 본 문제인지 바로 구분됩니다.</li>
+    <li><b>치명도 기준은 내 판단을 그대로.</b> 실제 검수에서 먼저 보는 순서(서버·저장 → 광고·결제 → 진행불가·크래시 → UI → 텍스트)를 규칙으로 넣었습니다.</li>
+    <li><b>출력은 스키마로 고정.</b> 리뷰 로그 DB의 선택지와 같은 값만 나오게 해서, 결과를 그대로 옮겨 붙일 수 있습니다.</li>
+  </ul>
+
+  <h3>써 보니</h3>
+  <p><span class="todo">[실제 업무 메모(비식별화)로 N건 돌려 본 결과를 채울 자리: 정리 시간 전→후, 모델이 틀린 경우와 고친 규칙]</span></p>
+
+  <h3>다음에 할 것</h3>
+  <ul class="clean">
+    <li>판정을 사람이 고친 기록을 모아, 모델과 내 판정이 갈린 비율을 지표로 봅니다.</li>
+    <li>리뷰 로그 DB에 바로 쓰기. 지금은 복사해서 붙입니다.</li>
+  </ul>
+</section>
+
+<!-- 작업 2 -->
+<section class="block" id="lovebug">
+  <span class="tag">02</span><span class="tag">게임 기획·제작</span><span class="tag">Claude Code</span>
+  <h2>러브버그: 서울 땅따먹기 게임</h2>
+  <p class="lead">러브버그 진영과 방역팀 진영이 서울 지도를 나눠 칠하는 5분 라운드제 게임. 제 첫 작품입니다. 멀티플레이로 기획했지만 플랫폼 제약을 확인한 뒤 봇전으로 범위를 줄여 출시했습니다. Verse8 위에서 Claude Code로 기획·구현·수정했습니다.</p>
+  <p class="muted"><span class="todo">[여기에 20~30초 플레이 영상 또는 GIF. 나침반 화살표가 뜨는 장면]</span></p>
+
+  <h3>① 버그 보고를 다시 정의하기</h3>
+  <p>땅을 그리다 꼬리가 안 닫히는 "점령 꼬리 버그"를 조사했습니다. 코드를 확인해 보니 멈춤이나 데드락은 없었습니다.</p>
+  <div class="reframe">
+    <div class="from">꼬리 판정 버그</div>
+    <div class="arrow">→</div>
+    <div class="to">돌아갈 우리 땅이 화면에 안 보인다</div>
+  </div>
+  <p>진짜 문제는 코드가 아니라 <b>정보</b>였습니다. 해결책으로 "내 땅/아군 땅/적 땅" 3색 구분이 제안됐지만, 색이 하나 늘면 작은 화면과 미니맵에서 진영 구분이 흐려집니다. 대신 <b>나침반 화살표</b> 하나를 넣었습니다. 땅을 그리는 중이고 우리 땅이 화면 밖에 있을 때만 나타나, 가장 가까운 아군 땅을 가리킵니다.</p>
+
+  <h3>② 렉의 진짜 원인을 찾고, 범위를 줄여 출시하기</h3>
+  <p>멀티플레이에서 렉이 계속됐습니다. 첫 가설은 데이터 크기였고, 게임 규칙을 하나도 바꾸지 않고 매 틱 전송량을 <span class="num">81.7KB → 48.7KB</span>로 40% 줄였습니다. 그런데 <b>렉은 그대로</b>였습니다.</p>
+  <p>가설을 하나씩 지우고 렉이 없는 동료 게임과 통신 방식을 비교하다가, 공식 문서에는 없고 <b>SDK 소스 코드에만 있는 제한</b>을 찾았습니다. 함수 하나를 1초에 10번 넘게 부르면 호출 자체가 거부됩니다. 느린 게 아니라 거절당하고 있었던 것입니다.</p>
+  <div class="reframe">
+    <div class="from">전송량을 더 줄인다</div>
+    <div class="arrow">→</div>
+    <div class="to">멀티를 접고 봇전으로 출시한다</div>
+  </div>
+  <p>매 틱 전체 상태를 주고받는 구조 자체가 이 플랫폼과 맞지 않았고, 기획한 규모(한 방에 수십 명)에서는 렉을 피할 수 없었습니다. 플랫폼 운영팀에 직접 문의해 서버 실행 구조를 확인해 보니, 근본적으로 고치려면 게임별 승인이 필요하고 서버 장애 시 복구가 안 되는 단점이 있는 방식으로 바꿔야 했습니다. 그래서 통신 구조를 새로 짜는 대신 <b>멀티플레이를 빼고 봇과 싸우는 게임으로 범위를 줄이자고 제안</b>했고, 그대로 출시까지 끝냈습니다. 진단 과정은 다른 제작자도 같은 함정에 빠지지 않도록 팀 문서로 정리했습니다.</p>
+
+  <h3>③ 봇이 곧 게임이 되었으니, 봇을 수치로 고치기</h3>
+  <div class="table-scroll">
+  <table>
+    <tr><th>관찰</th><th>숫자</th><th>결정</th></tr>
+    <tr><td>봇이 그리던 중 돌아갈 자리가 사라짐</td><td class="num">11.3%</td><td>"나온 자리" 대신 "가장 가까운 아군 땅"으로 복귀하도록 우선순위 설정</td></tr>
+    <tr><td>봇이 적군에게 반응하지 않음</td><td class="num">23.6% → 26.4%</td><td>자기보호 규칙 추가. 목적 없이 맴도는 봇을 먼저 고쳐야 정확히 측정된다고 판단해 순서 조정</td></tr>
+    <tr><td>강남을 한강·다리 3개 너머 "보물섬"으로 설계</td><td class="num">3분 뒤 점령 0칸, 방문 0명</td><td>미끼가 안 통한다고 보고 보통 땅으로 전환. 보상 아이템은 랜덤 구역에 뿌리고 배너로 알림</td></tr>
+  </table>
+  </div>
+
+  <h3>④ 덜어내기</h3>
+  <ul class="clean">
+    <li>"킬했습니다" 팝업 삭제 → 얻은 점수를 크게 보여줌</li>
+    <li>협공 토스트, 킬 경보 오버레이, 반복 공지 삭제</li>
+    <li>겹치던 배너 두 개를 실측해 한 자리에 하나만 뜨도록 구조 자체를 바꿈</li>
+  </ul>
+</section>
+
+<section class="block" id="how">
+  <h2>일하는 방식</h2>
+  <ol class="clean">
+    <li><b>보고된 문제를 그대로 믿지 않는다.</b> "버그"가 사실은 정보 부족인지, "렉"이 사실은 거절인지 먼저 확인합니다.</li>
+    <li><b>고칠 수 없으면 범위를 줄여서라도 낸다.</b> 러브버그는 멀티를 접고 봇전으로 출시했습니다.</li>
+    <li><b>기획서보다 돌아가는 것을 먼저.</b> 두 작업 모두 설명보다 결과물이 먼저 있었습니다.</li>
+    <li><b>숫자로 버린다.</b> 공들인 설계도 수치가 안 나오면 걷어냅니다. 강남 보물섬처럼요.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">김다영 · <a href="mailto:da0160@naver.com">da0160@naver.com</a> · 2026</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>검수 메모 정리</title>
+<meta name="description" content="날것의 게임 검수 메모를 치명도 순 이슈, 리뷰 로그 항목, 반려 사유 초안으로 정리하는 도구">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-2); margin: 14px 0 6px; }
+  input, select, textarea {
+    width: 100%; font: inherit; font-size: 15px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;
+  }
+  textarea { min-height: 260px; resize: vertical; line-height: 1.6; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  details.key { margin-top: 14px; font-size: 14px; }
+  details.key summary { cursor: pointer; color: var(--ink-2); }
+  .panel { min-height: 300px; }
+  .empty { color: var(--ink-3); padding: 40px 0; text-align: center; }
+  .verdict { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .badge { font-weight: 700; font-size: 20px; padding: 2px 12px; border-radius: 8px; }
+  .badge.fail { background: var(--crit); color: #fff; }
+  .badge.recheck { background: var(--major); color: #fff; }
+  .badge.pass { background: var(--ok); color: #fff; }
+  .issue { border-left: 4px solid var(--minor); padding: 8px 12px; margin: 10px 0; background: var(--bg); border-radius: 0 8px 8px 0; }
+  .issue.s-치명 { border-color: var(--crit); }
+  .issue.s-주요 { border-color: var(--major); }
+  .issue .sev { font-family: var(--mono); font-size: 12px; font-weight: 700; }
+  .issue.s-치명 .sev { color: var(--crit); }
+  .issue.s-주요 .sev { color: var(--major); }
+  .issue .sev { color: var(--minor); }
+  .issue blockquote { margin: 4px 0 0; color: var(--ink-2); font-size: 14px; }
+  .issue blockquote::before { content: "메모: "; color: var(--ink-3); }
+  .val-bad { color: var(--crit); font-weight: 600; }
+  .val-unknown { color: var(--ink-3); }
+  .msg { white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 15px; }
+  .note { font-size: 13px; color: var(--ink-3); margin-top: 8px; }
+  .error { color: var(--crit); }
+  .demo-flag { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap wide">
+    <a class="brand" href="./">← 포트폴리오</a>
+    <nav><a href="https://github.com/dadu100w-ux/dadu100w-ux.github.io">코드</a></nav>
+  </div>
+</header>
+
+<main class="wrap wide">
+  <section class="hero" style="padding-bottom:24px">
+    <div class="eyebrow">LLM 업무 도구 · 프로토타입</div>
+    <h1 style="margin-bottom:8px">검수 메모 정리</h1>
+    <p class="lead">플레이하며 적은 메모를 그대로 붙여 넣으면, 치명적인 것부터 정리해 드립니다.</p>
+  </section>
+
+  <div class="grid">
+    <div>
+      <div class="btn-row" style="margin-top:0">
+        <button class="btn ghost" data-sample="0">예시 1: 반려될 게임</button>
+        <button class="btn ghost" data-sample="1">예시 2: 통과할 게임</button>
+      </div>
+      <div class="row2">
+        <div>
+          <label for="game">게임 이름</label>
+          <input id="game" placeholder="예: 스카이 점프">
+        </div>
+        <div>
+          <label for="target">검수 기준</label>
+          <select id="target">
+            <option>원스토어 출시 전 QA</option>
+            <option>플랫폼 게임 검수 (반려 판정)</option>
+            <option>일반 플레이 테스트</option>
+          </select>
+        </div>
+      </div>
+      <label for="memo">검수 메모</label>
+      <textarea id="memo" placeholder="본 순서대로, 문장이 엉망이어도 괜찮아요.&#10;예) 3스테이지 보스 나오면 화면 멈춤. 광고 30초 보고 닫았는데 부활 안 됨."></textarea>
+
+      <details class="key">
+        <summary>직접 돌려 보기 (Anthropic API 키 필요)</summary>
+        <label for="apikey">API 키</label>
+        <input id="apikey" type="password" autocomplete="off" placeholder="sk-ant-...">
+        <p class="note">키는 이 페이지에서 Anthropic API로만 전송되고 어디에도 저장하지 않습니다. 새로고침하면 사라집니다.</p>
+      </details>
+
+      <div class="btn-row">
+        <button class="btn" id="run">정리하기</button>
+      </div>
+      <p class="note" id="status"></p>
+    </div>
+
+    <div class="card panel" id="out">
+      <div class="empty">왼쪽에서 예시를 고르거나<br>메모를 넣고 정리해 보세요.</div>
+    </div>
+  </div>
+
+  <section class="block" style="margin-top:40px">
+    <h2>어떻게 판단하나요</h2>
+    <div class="table-scroll">
+    <table>
+      <tr><th>치명도</th><th>기준</th></tr>
+      <tr><td><b style="color:var(--crit)">치명</b></td><td>데이터 저장·서버 문제, 광고 보상·결제 오류, 진행 불가, 크래시. 하나만 있어도 반려</td></tr>
+      <tr><td><b style="color:var(--major)">주요</b></td><td>플레이는 되지만 핵심 기능 일부가 이상하거나 UI가 심하게 깨짐</td></tr>
+      <tr><td><b style="color:var(--minor)">경미</b></td><td>오타, 살짝 겹치는 아이콘처럼 경험을 크게 해치지 않는 것</td></tr>
+    </table>
+    </div>
+    <p>메모에 나오지 않은 항목은 추측하지 않고 <b>확인불가</b>로 둡니다. 대신 "확인하지 않은 항목"으로 따로 알려 줍니다.</p>
+    <p class="muted">예시 결과는 가상의 게임과 메모로 미리 만들어 둔 것입니다. 실제 업무 데이터는 쓰지 않았습니다.</p>
+  </section>
+</main>
+
+<footer><div class="wrap wide">김다영 · 모델: Claude Opus 5 · 구조화 출력(JSON 스키마)</div></footer>
+
+<script type="module" src="tool.js"></script>
+</body>
+</html>
