@@ -13,7 +13,7 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="./">김다영</a>
-    <nav><a href="#tool">검수 도구</a><a href="#lovebug">러브버그</a><a href="#how">일하는 방식</a></nav>
+    <nav><a href="#tool">검수 도구</a><a href="#games">게임 5개</a><a href="#lovebug">러브버그</a><a href="#how">일하는 방식</a></nav>
   </div>
 </header>
 
@@ -22,7 +22,7 @@
 <section class="hero">
   <div class="eyebrow">AI PRODUCT BUILDER 지원 포트폴리오</div>
   <h1>문제를 다시 정의하고,<br>돌아가는 첫 형태로 만들고,<br>수치로 확인합니다.</h1>
-  <p class="lead">AI 게임 제작 플랫폼 Verse8에서 게임 검수·QA를 맡고, Claude Code로 첫 게임을 기획부터 출시까지 만들었습니다. 아래 두 작업은 모두 AI와 함께 직접 만든 결과물입니다.</p>
+  <p class="lead">AI 게임 제작 플랫폼 Verse8에서 게임 검수·QA를 맡고, Claude Code로 3개월 동안 게임 5개를 기획·제작·출시했습니다. 아래 작업은 모두 AI와 함께 직접 만든 결과물입니다.</p>
 </section>
 
 <!-- 작업 1 -->
@@ -65,8 +65,42 @@
 </section>
 
 <!-- 작업 2 -->
+<section class="block" id="games">
+  <span class="tag">02</span><span class="tag">게임 5개 출시</span><span class="tag">Claude Code</span>
+  <h2>3개월, 게임 5개. 매번 AI와 일하는 방식을 고쳤습니다</h2>
+  <p class="lead">2026년 7~9월 Verse8에서 게임 5개를 기획·제작·출시했습니다. 한 프로젝트에서 막힌 지점을 다음 프로젝트의 작업 방식으로 바꿔 나갔습니다.</p>
+
+  <div class="timeline">
+    <div class="tl">
+      <div class="tl-head"><b>러브버그</b><span class="num">7월 ~ 8월 중순</span></div>
+      <p>서울 땅따먹기. 렉의 원인을 끝까지 찾고, 멀티를 접어 봇전으로 출시. <a href="#lovebug">자세히 ↓</a></p>
+      <p class="tl-learn">→ 만들기 전에 플랫폼 제약부터 확인한다</p>
+    </div>
+    <div class="tl">
+      <div class="tl-head"><b>어쩌다 인생</b><span class="num">열흘</span></div>
+      <p>배우 IP 홍보용 영상 게임. "숏폼 홍보용"이라는 목적을 먼저 정하고 모든 판단을 거기에 맞춤. 팀 피드백("전개가 너무 빠르다")에 전환 나레이션 3곳으로 답하고, 추가 요청은 비용을 따져 필요한 만큼만 반영. 배포에서 빠진 영상 35개를 약 1/6 용량으로 줄여 올림.</p>
+      <p class="tl-learn">→ 목적 한 줄이 판단 기준이 된다</p>
+    </div>
+    <div class="tl">
+      <div class="tl-head"><b>에이리언 퍼즐팡</b><span class="num">7월 ~ 9월</span></div>
+      <p>500레벨 슬라이딩 퍼즐, 4개 국어. 별 → 코인 → 꾸미기로 이어지는 반복 동기를 만들고, 새로 얻은 별만 코인으로 쳐서 같은 판 반복 파밍을 막음.</p>
+      <p class="tl-learn">→ AI가 못 하는 일(이미지 배경 지우기)은 다른 도구로 나눠 맡긴다</p>
+    </div>
+    <div class="tl">
+      <div class="tl-head"><b>색칠공부</b><span class="num">8월</span></div>
+      <p>원스토어 픽셀 색칠 게임. 직접 환불해 보고 기기를 바꿔 가며 확인하다가, 환불 후 상점이 다시 안 뜨는 문제와 광고로 연 그림이 다른 기기에서 다시 잠기는 문제를 찾음.</p>
+      <p class="tl-learn">→ 결제·저장은 "됐다"는 말 대신 서버에서 다시 읽어 확인한다</p>
+    </div>
+    <div class="tl">
+      <div class="tl-head"><b>수상한 펭귄 목장</b><span class="num">8월 ~ 9월</span></div>
+      <p>진짜 펭귄은 돌보고 가짜는 쫓아내는 판별 액션. 저장이 77번 연속 실패하는 동안 로그가 한 줄도 없었던 걸 진짜 문제로 보고, 색칠공부 코드를 올바른 예시로 지정해 <b>수정 지침 8항목을 직접 작성</b>.</p>
+      <p class="tl-learn">→ 에이전트에게는 본 것만 짧게 말하고, 지시 하나를 스펙 한 절로 쪼갠다</p>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="lovebug">
-  <span class="tag">02</span><span class="tag">게임 기획·제작</span><span class="tag">Claude Code</span>
+  <span class="tag">03</span><span class="tag">사례 깊이 보기</span><span class="tag">Claude Code</span>
   <h2>러브버그: 서울 땅따먹기 게임</h2>
   <p class="lead">러브버그 진영과 방역팀 진영이 서울 지도를 나눠 칠하는 5분 라운드제 게임. 제 첫 작품입니다. 멀티플레이로 기획했지만 플랫폼 제약을 확인한 뒤 봇전으로 범위를 줄여 출시했습니다. Verse8 위에서 Claude Code로 기획·구현·수정했습니다.</p>
   <p class="muted"><span class="todo">[여기에 20~30초 플레이 영상 또는 GIF. 나침반 화살표가 뜨는 장면]</span></p>
@@ -114,7 +148,7 @@
   <ol class="clean">
     <li><b>보고된 문제를 그대로 믿지 않는다.</b> "버그"가 사실은 정보 부족인지, "렉"이 사실은 거절인지 먼저 확인합니다.</li>
     <li><b>고칠 수 없으면 범위를 줄여서라도 낸다.</b> 러브버그는 멀티를 접고 봇전으로 출시했습니다.</li>
-    <li><b>기획서보다 돌아가는 것을 먼저.</b> 두 작업 모두 설명보다 결과물이 먼저 있었습니다.</li>
+    <li><b>기획서보다 돌아가는 것을 먼저.</b> 검수 도구도, 게임 5개도 설명보다 결과물이 먼저 있었습니다.</li>
     <li><b>숫자로 버린다.</b> 공들인 설계도 수치가 안 나오면 걷어냅니다. 강남 보물섬처럼요.</li>
   </ol>
 </section>

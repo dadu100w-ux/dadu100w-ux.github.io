@@ -106,3 +106,12 @@ ol.clean li, ul.clean li { margin: 6px 0; }
 
 footer { padding: 48px 0 72px; border-top: 1px solid var(--line); color: var(--ink-3); font-size: 14px; }
 .todo { background: var(--accent-soft); color: var(--accent); padding: 0 4px; border-radius: 4px; }
+
+.timeline { margin: 20px 0; border-left: 2px solid var(--line); padding-left: 18px; }
+.tl { position: relative; margin: 0 0 22px; }
+.tl::before { content: ""; position: absolute; left: -25px; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.tl-head { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.tl-head .num { font-size: 13px; color: var(--ink-3); }
+.tl p { margin: 4px 0; }
+.tl-learn { color: var(--accent); font-weight: 600; font-size: 15px; }
+nav a { white-space: nowrap; }
