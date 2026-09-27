@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI 작업 포트폴리오</title>
-<meta name="description" content="문제를 다시 정의하고, 돌아가는 첫 형태로 만들고, 직접 해 보며 확인한 작업들">
+<meta name="description" content="일하다 막히는 단계를 찾아, AI로 도구를 만들어 뚫습니다. 게임 5개 출시와 AI 업무 도구">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +13,7 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="./">김다영</a>
-    <nav><a href="#tool">검수 도구</a><a href="#games">게임 5개</a><a href="#lovebug">러브버그</a><a href="#how">일하는 방식</a></nav>
+    <nav><a href="#tool">검수 도구</a><a href="#games">게임 5개</a><a href="#lovebug">러브버그</a><a href="#how">일하는 방식</a><a href="mailto:da0160@naver.com">연락</a></nav>
   </div>
 </header>
 
@@ -21,8 +21,14 @@
 
 <section class="hero">
   <div class="eyebrow">AI PRODUCT BUILDER 지원 포트폴리오</div>
-  <h1>문제를 다시 정의하고,<br>돌아가는 첫 형태로 만들고,<br>직접 해 보며 확인합니다.</h1>
-  <p class="lead">AI 게임 제작 플랫폼 Verse8에서 게임 검수·QA를 맡고, Claude Code와 플랫폼 AI 에이전트로 3개월 동안 게임 5개를 기획·제작·출시했습니다. 아래 작업은 모두 AI와 함께 직접 만든 결과물입니다.</p>
+  <h1>일하다 막히는 단계를 찾아,<br>AI로 도구를 만들어 뚫습니다.</h1>
+  <div class="chips">
+    <span class="chip"><b>3개월</b> 게임 5개 출시</span>
+    <span class="chip"><b>직접 만든 도구</b> 이미지 누끼 도구</span>
+    <span class="chip"><b>검수</b> 하루 20개 넘게 검수한 경험</span>
+  </div>
+  <p class="lead">AI 게임 제작 플랫폼 Verse8에서 게임 검수·QA를 맡고, Claude Code와 플랫폼 AI 에이전트로 2026년 7~9월 게임 5개를 기획·제작·출시했습니다. 프로젝트마다 누가 무엇을 했는지(나 / AI / 동료)를 함께 적었습니다.</p>
+  <p class="muted">김다영 · <a href="mailto:da0160@naver.com">da0160@naver.com</a> · <a href="https://github.com/dadu100w-ux">GitHub</a></p>
 </section>
 
 <!-- 작업 1 -->
@@ -30,13 +36,19 @@
   <span class="tag">01</span><span class="tag">LLM 업무 도구</span><span class="tag">Claude API</span>
   <h2>검수 메모 정리 도구</h2>
   <p class="lead">날것의 검수 메모를 넣으면 치명도 순으로 이슈를 정리하고, 리뷰 로그 항목을 채우고, 개발자에게 보낼 반려 사유 초안까지 씁니다.</p>
+  <dl class="meta">
+    <div><dt>기간</dt><dd>2026년 9월, 개인 프로토타입</dd></div>
+    <div><dt>내 몫</dt><dd>치명도 기준과 리뷰 로그 항목(실제 검수에서 쓰는 판단 순서), 출력 규칙 결정</dd></div>
+    <div><dt>AI 몫</dt><dd>화면과 코드 구현 (Claude)</dd></div>
+    <div><dt>도구</dt><dd>Claude API 구조화 출력, 정적 웹페이지</dd></div>
+  </dl>
   <div class="btn-row">
     <a class="btn" href="tool.html">도구 써 보기 →</a>
     <a class="btn ghost" href="https://github.com/dadu100w-ux/dadu100w-ux.github.io">코드 보기</a>
   </div>
 
   <h3>문제</h3>
-  <p>하루 20개 넘는 게임을 검수하면 판단보다 <b>정리</b>에 시간이 더 듭니다. 플레이하면서 적은 메모를 리뷰 로그의 정해진 항목(크래시, 진행불가, 광고 보상, 저장 등)에 옮기고, 반려할 게임은 사유를 다시 문장으로 씁니다. 같은 내용을 세 번 쓰는 셈입니다.</p>
+  <p>하루에 20개 넘게 검수한 날, 판단보다 <b>정리</b>에 시간이 더 듭니다. 플레이하면서 적은 메모를 리뷰 로그의 정해진 항목(크래시, 진행불가, 광고 보상, 저장 등)에 옮기고, 반려할 게임은 사유를 다시 문장으로 씁니다. 같은 내용을 세 번 쓰는 셈입니다.</p>
   <p>더 큰 문제는 순서였습니다. 메모는 발견한 순서대로 쌓이는데, 판정은 <b>치명적인 것부터</b> 봐야 합니다. 서버·저장·광고 보상 문제 하나가 오타 열 개보다 무겁습니다.</p>
 
   <h3>만든 것</h3>
@@ -62,6 +74,7 @@
     <li>판정을 사람이 고친 기록을 모아, 모델과 내 판정이 갈린 비율을 지표로 봅니다.</li>
     <li>리뷰 로그 DB에 바로 쓰기. 지금은 복사해서 붙입니다.</li>
   </ul>
+  <p>이 틀은 검수에만 쓰는 게 아닙니다. <b>사람이 날것으로 적고 → 정해진 항목으로 다시 옮기고 → 누군가에게 전달하는</b> 일이라면 같은 방식이 통합니다. 회의 메모를 할 일 목록과 담당자로 나누는 일, 들어온 문의를 유형별로 나누고 답변 초안을 쓰는 일이 그렇습니다. 메모에 없는 건 채우지 않고, 근거를 원문에서 인용하는 규칙도 그대로 가져갑니다.</p>
 </section>
 
 <!-- 작업 2 -->
@@ -69,6 +82,12 @@
   <span class="tag">02</span><span class="tag">게임 5개 출시</span><span class="tag">Claude Code</span>
   <h2>3개월, 게임 5개. 매번 AI와 일하는 방식을 고쳤습니다</h2>
   <p class="lead">2026년 7~9월 Verse8에서 게임 5개를 기획·제작·출시했습니다. 한 프로젝트에서 막힌 지점을 다음 프로젝트의 작업 방식으로 바꿔 나갔습니다.</p>
+  <dl class="meta">
+    <div><dt>형태</dt><dd>Verse8 업무. 게임마다 혼자 기획·제작</dd></div>
+    <div><dt>내 몫</dt><dd>기획과 방향 결정, 직접 플레이하며 문제 찾기, AI에게 일을 쪼개 지시하기</dd></div>
+    <div><dt>AI 몫</dt><dd>코드 구현, 원인 분석 보조 (Claude Code, 플랫폼 AI 에이전트)</dd></div>
+    <div><dt>동료</dt><dd>어쩌다 인생의 영상은 사내 디자이너가 제작</dd></div>
+  </dl>
 
   <div class="timeline">
     <div class="tl">
@@ -102,7 +121,12 @@
 <section class="block" id="lovebug">
   <span class="tag">03</span><span class="tag">사례 깊이 보기</span><span class="tag">Claude Code</span>
   <h2>러브버그: 서울 땅따먹기 게임</h2>
-  <p class="lead">러브버그 진영과 방역팀 진영이 서울 지도를 나눠 칠하는 5분 라운드제 게임. 제 첫 작품입니다. 멀티플레이로 기획했지만 플랫폼 제약을 확인한 뒤 봇전으로 범위를 줄여 출시했습니다. Verse8 위에서 Claude Code로 기획·구현·수정했습니다.</p>
+  <p class="lead">러브버그 진영과 방역팀 진영이 서울 지도를 나눠 칠하는 5분 라운드제 게임. 제 첫 작품입니다. 멀티플레이로 기획했지만 플랫폼 제약을 확인한 뒤 봇전으로 범위를 줄여 출시했습니다. Verse8 위에서 Claude Code로 구현했습니다.</p>
+  <dl class="meta">
+    <div><dt>기간</dt><dd>2026년 7월 ~ 8월 중순</dd></div>
+    <div><dt>내 몫</dt><dd>나침반 화살표와 덜어내기 결정, 플랫폼 운영팀 문의, 봇전 전환 제안</dd></div>
+    <div><dt>AI 몫</dt><dd>코드 구현, 렉 원인 추적 보조, 봇 행동 분석</dd></div>
+  </dl>
   <p class="muted"><span class="todo">[여기에 20~30초 플레이 영상 또는 GIF. 나침반 화살표가 뜨는 장면]</span></p>
 
   <h3>① 버그 보고를 다시 정의하기</h3>
@@ -153,7 +177,10 @@
 </main>
 
 <footer>
-  <div class="wrap">김다영 · <a href="mailto:da0160@naver.com">da0160@naver.com</a> · 2026</div>
+  <div class="wrap">
+    <p class="closing">일하다 막히는 단계를 찾아, AI로 도구를 만들어 뚫습니다.</p>
+    <p>김다영 · <a href="mailto:da0160@naver.com">da0160@naver.com</a> · <a href="https://github.com/dadu100w-ux">GitHub</a></p>
+  </div>
 </footer>
 </body>
 </html>

@@ -115,3 +115,14 @@ footer { padding: 48px 0 72px; border-top: 1px solid var(--line); color: var(--i
 .tl p { margin: 4px 0; }
 .tl-learn { color: var(--accent); font-weight: 600; font-size: 15px; }
 nav a { white-space: nowrap; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.chip { font-size: 14px; padding: 5px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+.chip b { color: var(--accent); margin-right: 4px; }
+dl.meta { display: grid; grid-template-columns: 1fr; gap: 4px; margin: 16px 0 8px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; }
+dl.meta div { display: grid; grid-template-columns: 56px 1fr; gap: 10px; }
+dl.meta dt { color: var(--ink-3); font-weight: 600; }
+dl.meta dd { margin: 0; color: var(--ink-2); }
+footer .closing { font-size: 18px; font-weight: 700; color: var(--ink); margin: 0 0 6px; }
+footer p { margin: 0; }
+@media (max-width: 640px) { header.top nav a { margin-left: 10px; } header.top nav a[href="#how"] { display: none; } }
