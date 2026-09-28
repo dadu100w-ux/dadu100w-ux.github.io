@@ -13,7 +13,7 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="./">김다영</a>
-    <nav><a href="#tool">검수 도구</a><a href="#games">게임 5개</a><a href="#lovebug">러브버그</a><a href="#how">일하는 방식</a><a href="mailto:da0160@naver.com">연락</a></nav>
+    <nav><a href="#tool">검수 도구</a><a href="#games">게임 5개</a><a href="#lovebug">Love Bugs</a><a href="#how">일하는 방식</a><a href="mailto:da0160@naver.com">연락</a></nav>
   </div>
 </header>
 
@@ -92,7 +92,7 @@
 
   <div class="timeline">
     <div class="tl">
-      <div class="tl-head"><b>러브버그</b><span class="num">7월</span></div>
+      <div class="tl-head"><b>Do you hate Love Bugs?</b><span class="num">7월</span></div>
       <p>서울 땅따먹기. 렉의 원인을 끝까지 찾고, 멀티를 접어 봇전으로 출시. <a href="#lovebug">자세히 ↓</a></p>
       <p class="tl-learn">→ 만들기 전에 플랫폼 제약부터 확인한다</p>
     </div>
@@ -102,18 +102,18 @@
       <p class="tl-learn">→ 목적 한 줄이 판단 기준이 된다</p>
     </div>
     <div class="tl">
-      <div class="tl-head"><b>에이리언 퍼즐팡</b><span class="num">7월 ~ 9월</span></div>
+      <div class="tl-head"><b>에이리언 미로 (Alien Maze)</b><span class="num">7월 ~ 9월</span></div>
       <p>퍼즐 게임 롱캣을 오마주하고 아이디어를 덧붙인 500레벨 슬라이딩 퍼즐, 4개 국어. 처음 플레이하며 "되돌리기 없음, 이동 수가 안 보임, 피드백 없음" 등 문제 5개를 짚고 대부분 해결. 별 → 코인 → 꾸미기로 이어지는 반복 동기를 만들고, 새로 얻은 별만 코인으로 쳐서 같은 판 반복 파밍을 막음.</p>
       <p class="tl-learn">→ AI가 못 하는 단계(이미지 배경 지우기)는 Claude Code로 도구를 직접 만들어 해결한다</p>
     </div>
     <div class="tl">
-      <div class="tl-head"><b>색칠공부</b><span class="num">8월</span></div>
+      <div class="tl-head"><b>비어갱 색칠 공방</b><span class="num">8월</span></div>
       <p>스토어 출시용 픽셀 색칠 게임. 직접 환불해 보고 기기를 바꿔 가며 확인하다가, 환불 후 상점이 다시 안 뜨는 문제와 광고로 연 그림이 다른 기기에서 다시 잠기는 문제를 찾음.</p>
       <p class="tl-learn">→ 결제·저장은 "됐다"는 말 대신 서버에서 다시 읽어 확인한다</p>
     </div>
     <div class="tl">
-      <div class="tl-head"><b>수상한 펭귄 목장</b><span class="num">8월 ~ 9월</span></div>
-      <p>진짜 펭귄은 돌보고 가짜는 쫓아내는 판별 액션. 색칠공부에서 쓰던 서버 저장 방식을 펭귄에도 맞추고, 화면 크기에 맞춰 늘어나는 레이아웃으로 시작했다가 창마다 손보는 일이 끝없이 이어지자 한 가지 고정 크기로 전환.</p>
+      <div class="tl-head"><b>Suspicious Penguin Farm</b><span class="num">8월 ~ 9월</span></div>
+      <p>진짜 펭귄은 돌보고 가짜는 쫓아내는 판별 액션. 비어갱 색칠 공방에서 쓰던 서버 저장 방식을 이 게임에도 맞추고, 화면 크기에 맞춰 늘어나는 레이아웃으로 시작했다가 창마다 손보는 일이 끝없이 이어지자 한 가지 고정 크기로 전환.</p>
       <p class="tl-learn">→ 무대 크기는 첫 주에 하나로 정하고, 에이전트에게는 본 것만 짧게 말한다</p>
     </div>
   </div>
@@ -121,7 +121,7 @@
 
 <section class="block" id="lovebug">
   <span class="tag">03</span><span class="tag">사례 깊이 보기</span><span class="tag">Claude Code</span>
-  <h2>러브버그: 서울 땅따먹기 게임</h2>
+  <h2>Do you hate Love Bugs?: 서울 땅따먹기 게임</h2>
   <p class="lead">러브버그 진영과 방역팀 진영이 서울 지도를 나눠 칠하는 5분 라운드제 게임. 제 첫 작품입니다. 멀티플레이로 기획했지만 플랫폼 제약을 확인한 뒤 봇전으로 범위를 줄여 출시했습니다. Verse8 위에서 Claude Code로 구현했습니다.</p>
   <dl class="meta">
     <div><dt>기간</dt><dd>2026년 7월</dd></div>
@@ -169,7 +169,7 @@
   <h2>일하는 방식</h2>
   <ol class="clean">
     <li><b>보고된 문제를 그대로 믿지 않는다.</b> "버그"가 사실은 정보 부족인지, "렉"이 사실은 거절인지 먼저 확인합니다.</li>
-    <li><b>고칠 수 없으면 범위를 줄여서라도 낸다.</b> 러브버그는 멀티를 접고 봇전으로 출시했습니다.</li>
+    <li><b>고칠 수 없으면 범위를 줄여서라도 낸다.</b> Do you hate Love Bugs?는 멀티를 접고 봇전으로 출시했습니다.</li>
     <li><b>기획서보다 돌아가는 것을 먼저.</b> 검수 도구도, 게임 5개도 설명보다 결과물이 먼저 있었습니다.</li>
     <li><b>안 통하면 버린다.</b> 공들인 설계도 실제로 안 통하면 걷어냅니다. 강남 보물섬처럼요.</li>
   </ol>
