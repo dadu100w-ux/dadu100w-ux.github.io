@@ -197,8 +197,8 @@ function render(r, game, isDemo) {
       <button class="btn ghost" id="copyMd">전체를 마크다운으로 복사</button>
     </div>`;
 
-  $("copyMsg").onclick = () => copy(r.developer_message, "메시지를 복사했어요.");
-  $("copyMd").onclick = () => copy(toMarkdown(r, game), "마크다운으로 복사했어요.");
+  $("copyMsg").onclick = () => copy(r.developer_message, "메시지를 복사함.");
+  $("copyMd").onclick = () => copy(toMarkdown(r, game), "마크다운으로 복사함.");
 }
 
 function toMarkdown(r, game) {
@@ -228,7 +228,7 @@ async function copy(text, msg) {
     await navigator.clipboard.writeText(text);
     setStatus(msg);
   } catch {
-    setStatus("복사하지 못했어요. 직접 선택해서 복사해 주세요.", true);
+    setStatus("복사하지 못함. 직접 선택해서 복사해야 함.", true);
   }
 }
 
@@ -245,7 +245,7 @@ document.querySelectorAll("[data-sample]").forEach((btn) => {
     $("target").value = s.target;
     $("memo").value = s.memo;
     render(s.result, s.game, true);
-    setStatus("예시를 불러왔어요. API 키가 있으면 [정리하기]로 직접 돌려 볼 수 있어요.");
+    setStatus("예시를 불러옴. API 키가 있으면 [정리하기]로 직접 돌려 볼 수 있음.");
   };
 });
 
@@ -253,15 +253,15 @@ $("run").onclick = async () => {
   const apiKey = $("apikey").value.trim();
   const memo = $("memo").value.trim();
   const game = $("game").value.trim() || "이름 없는 게임";
-  if (!memo) return setStatus("메모를 먼저 넣어 주세요.", true);
+  if (!memo) return setStatus("메모를 먼저 넣어야 함.", true);
   if (!apiKey) {
     $("apikey").closest("details").open = true;
-    return setStatus("직접 돌리려면 API 키가 필요해요. 키가 없으면 위의 예시로 결과를 볼 수 있어요.", true);
+    return setStatus("직접 돌리려면 API 키가 필요함. 키가 없으면 위의 예시로 결과를 볼 수 있음.", true);
   }
 
   const btn = $("run");
   btn.disabled = true;
-  setStatus("정리하는 중이에요… 보통 10~30초 걸려요.");
+  setStatus("정리하는 중… 보통 10~30초 걸림.");
 
   const client = new Anthropic({ apiKey, dangerouslyAllowBrowser: true });
   try {
@@ -281,19 +281,19 @@ $("run").onclick = async () => {
     });
 
     if (response.stop_reason === "refusal") {
-      return setStatus("모델이 이 요청을 처리하지 않았어요. 메모 내용을 확인해 주세요.", true);
+      return setStatus("모델이 이 요청을 처리하지 않음. 메모 내용을 확인해야 함.", true);
     }
     if (response.stop_reason === "max_tokens") {
-      return setStatus("결과가 너무 길어 중간에 끊겼어요. 메모를 나눠서 넣어 주세요.", true);
+      return setStatus("결과가 너무 길어 중간에 끊김. 메모를 나눠서 넣어야 함.", true);
     }
     const text = response.content.find((b) => b.type === "text")?.text;
     render(JSON.parse(text), game, false);
-    setStatus("정리했어요.");
+    setStatus("정리 완료.");
   } catch (err) {
-    if (err instanceof Anthropic.AuthenticationError) setStatus("API 키가 올바르지 않아요.", true);
-    else if (err instanceof Anthropic.RateLimitError) setStatus("요청이 많아요. 잠시 후 다시 시도해 주세요.", true);
+    if (err instanceof Anthropic.AuthenticationError) setStatus("API 키가 올바르지 않음.", true);
+    else if (err instanceof Anthropic.RateLimitError) setStatus("요청이 많음. 잠시 후 다시 시도해야 함.", true);
     else if (err instanceof Anthropic.APIError) setStatus(`API 오류 (${err.status ?? "연결"}): ${err.message}`, true);
-    else if (err instanceof SyntaxError) setStatus("결과를 읽지 못했어요. 다시 시도해 주세요.", true);
+    else if (err instanceof SyntaxError) setStatus("결과를 읽지 못함. 다시 시도해야 함.", true);
     else setStatus(`오류: ${err.message}`, true);
   } finally {
     btn.disabled = false;
