@@ -69,10 +69,6 @@ header.top nav a[href^="mailto:"] {
   background: var(--accent); color: var(--accent-ink); padding: 7px 16px; border-radius: 999px; box-shadow: var(--shadow-accent);
 }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; font-size: 17px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
-.brand::before {
-  content: "김"; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
-  background: var(--accent); color: #fff; font-size: 16px; box-shadow: var(--shadow-accent);
-}
 
 /* type */
 .hero { padding: 72px 0 40px; }
